@@ -1,0 +1,32 @@
+name: Build email logo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'email/piwot-logo-email-v2.base64'
+      - '.github/workflows/build-email-logo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode PNG
+        run: |
+          base64 --decode email/piwot-logo-email-v2.base64 > email/piwot-logo-email-v2.png
+          rm -f email/piwot-logo-email-v2.base64
+          rm -f email/piwot-logo-email-v2.txt
+          rm -f email/piwot-logo-email-v2.png.txt
+          rm -f email/.upload-note
+          rm -f email/DO_NOT_USE_THE_OLD_CACHED_URL.md
+      - name: Commit generated asset
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish cache-busted PIWOT email logo'
+          git push
