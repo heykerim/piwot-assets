@@ -1,0 +1,1 @@
+This placeholder is temporary and will be replaced by the binary PNG in the next commit.
