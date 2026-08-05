@@ -1,0 +1,1 @@
+Use `piwot-logo-email-v2.png` for email signatures. It is the cache-busted, standard RGBA version of the PIWOT logo.
