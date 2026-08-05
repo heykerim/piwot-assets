@@ -1,0 +1,1 @@
+The old raw URL may be cached. Use the new `piwot-logo-email-v2.png` asset once committed.
